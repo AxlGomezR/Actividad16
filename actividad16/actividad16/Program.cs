@@ -57,6 +57,46 @@ do
                     }
                 } while (continuar==false);
                 break;
+            case 2:
+                Console.Clear();
+                if (productos.Count == 0)
+                {
+                    Console.WriteLine("No se ha ingresado ningún producto");
+                }
+                else
+                {
+                    do
+                    {
+                        int verificar;
+                        Console.WriteLine("Ingrese el código del producto que desea modificar");
+                        continuar = int.TryParse(Console.ReadLine(), out verificar);
+                        if (continuar)
+                        {
+                            if (productos.ContainsKey(verificar))
+                            {
+                                Producto p = new Producto();
+                                Console.WriteLine("Ingrese el nuevo nombre del producto");
+                                p.nombre = Console.ReadLine();
+                                Console.WriteLine("Ingrese el nuevo precio");
+                                continuar=double.TryParse(Console.ReadLine() , out p.precio);
+                                if (continuar && p.precio > 0)
+                                {
+                                    
+                                }
+                                else
+                                {
+                                    Console.WriteLine("El precio ingresado no es válido");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Aegurese de ingresar un código válido");
+                        }
+                    } while (continuar==false);
+                }
+                break;
         }
     }
     else
